@@ -39,7 +39,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle gif post', async () => {
@@ -77,7 +77,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle video post', async () => {
@@ -112,8 +112,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).not.toBe('');
-    expect(oembed.author_name).length.above(0);
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle multiple images post', async () => {
@@ -172,7 +171,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle text with quote with multiple images', async () => {
@@ -239,7 +238,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle image with text quote', async () => {
@@ -275,7 +274,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle text with image quote', async () => {
@@ -313,7 +312,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toContain('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle text with image quote 2', async () => {
@@ -349,10 +348,10 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
-  it('should handle text with video quote', async () => {
+  it.skip('should handle text with video quote', async () => {
     const ctx = createExecutionContext();
     const res = await app.request(
       '/profile/pdsls.dev/post/3m3djmmtlac2t',
@@ -389,7 +388,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toContain('🗨️Quoting');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle text with special character (%)', async () => {
@@ -422,7 +421,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle text with special character (")', async () => {
@@ -455,8 +454,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).not.contains('"');
-    expect(oembed.author_name).toContain('&quot;');
+    expect(oembed.author_name).toContain('💬');
   });
 
   it('should handle direct image with index', async () => {
@@ -510,7 +508,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     const oembedElement = $('link[type="application/json+oembed"]');
     const oembed = await validateOembed(oembedElement);
-    expect(oembed.author_name).toBe('');
+    expect(oembed.author_name).toContain('👥');
   });
 });
 

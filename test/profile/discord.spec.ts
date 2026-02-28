@@ -277,15 +277,31 @@ const validateOembed = (html: cheerio.CheerioAPI): boolean => {
   }
 
   const href = link.attr('href');
-  const params = new URLSearchParams({
-    author: '',
-    link: encodeURIComponent(toUSVString('https://bsky.app/profile/example.bsky.social/')),
-    title: encodeURIComponent(toUSVString('Example User (@example.bsky.social)')),
-    provider: encodeURIComponent(toUSVString(`👥 100 ➡️ 50 📸 25`))
-  });
-  const expectedHref = `http://localhost/oembed?${params}`;
-  if (href !== expectedHref) {
-    console.error(`Alternate link tag has href '${href}', expected '${expectedHref}'`);
+  if (!href) return false;
+
+  const parsedHref = new URL(href);
+  const expectedLink = 'https://bsky.app/profile/example.bsky.social/';
+  const expectedTitle = 'Example User (@example.bsky.social)';
+  const expectedMetrics = '👥 100 ➡️ 50 📸 25';
+
+  if (decodeURIComponent(parsedHref.searchParams.get('link') || '') !== expectedLink) {
+    console.error(`Alternate link tag has link '${decodeURIComponent(parsedHref.searchParams.get('link') || '')}', expected '${expectedLink}'`);
+    return false;
+  }
+  if (decodeURIComponent(parsedHref.searchParams.get('title') || '') !== expectedTitle) {
+    console.error(`Alternate link tag has title '${decodeURIComponent(parsedHref.searchParams.get('title') || '')}', expected '${expectedTitle}'`);
+    return false;
+  }
+  if (decodeURIComponent(parsedHref.searchParams.get('metrics') || '') !== expectedMetrics) {
+    console.error(`Alternate link tag has metrics '${decodeURIComponent(parsedHref.searchParams.get('metrics') || '')}', expected '${expectedMetrics}'`);
+    return false;
+  }
+  if (!parsedHref.searchParams.has('motd_title')) {
+    console.error(`Alternate link tag missing motd_title`);
+    return false;
+  }
+  if (!parsedHref.searchParams.has('motd_link')) {
+    console.error(`Alternate link tag missing motd_link`);
     return false;
   }
 
