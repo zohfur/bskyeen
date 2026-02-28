@@ -26,7 +26,7 @@ function getMetaTags(host: string, profile: AppBskyActorGetProfile.OutputSchema)
     `<meta charset="utf-8" />`,
     `<meta name="theme-color" content="#0a7aff" />`,
     `<meta name="twitter:title" content="${userDisplayString}" />`,
-    `<meta property="og:site_name" content="bskye" />`,
+    `<meta property="og:site_name" content="bskyeen" />`,
     `<meta property="og:url" content="${profileUrl}" />`,
     `<meta http-equiv="refresh" content="0; url = ${profileUrl}" />`,
     `<meta property="og:description" content="${description}" />`,
