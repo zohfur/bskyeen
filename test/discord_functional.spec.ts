@@ -410,7 +410,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/jefinhomenes.bsky.social/post/3l5qdyb7kzh26');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe(
       '0; url = https://bsky.app/profile/jefinhomenes.bsky.social/post/3l5qdyb7kzh26'
