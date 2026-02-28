@@ -5,12 +5,20 @@ import {
   getPostImages,
   getPostVideo,
   getQuotingString,
+  getRandomMotdEntry,
   getUserDisplayString,
   metricsFormatter
 } from '../../util';
 import { AppBskyFeedPost, AppBskyFeedDefs, AppBskyEmbedRecord } from '@atproto/api';
 
-function getMetaTags(host: string, userHandler: string, postId: string, thread: AppBskyFeedDefs.ThreadViewPost): string[] {
+function getMetaTags(
+  host: string,
+  userHandler: string,
+  postId: string,
+  thread: AppBskyFeedDefs.ThreadViewPost,
+  motdTitle: string,
+  motdLink: string
+): string[] {
   if (!AppBskyFeedPost.isRecord(thread.post.record)) {
     throw new Error('Post record not found');
   }
@@ -22,22 +30,22 @@ function getMetaTags(host: string, userHandler: string, postId: string, thread: 
 
   const userDisplayString = escapeHtml(getUserDisplayString(author.displayName, author.handle));
 
-  let title = '';
+  let metrics = '';
   if (replyCount !== undefined) {
-    title += `💬 ${metricsFormatter.format(replyCount)} `;
+    metrics += `💬 ${metricsFormatter.format(replyCount)} `;
   }
   if (repostCount !== undefined) {
-    title += `🔁 ${metricsFormatter.format(repostCount)} `;
+    metrics += `🔁 ${metricsFormatter.format(repostCount)} `;
   }
   if (likeCount !== undefined) {
-    title += `❤️ ${metricsFormatter.format(likeCount)}`;
+    metrics += `❤️ ${metricsFormatter.format(likeCount)}`;
   }
 
   const metaTags = [
     `<meta charset="utf-8" />`,
     `<meta name="theme-color" content="#0a7aff" />`,
     `<meta name="twitter:title" content="${userDisplayString}" />`,
-    `<meta property="og:site_name" content="bskye" />`,
+    `<meta property="og:site_name" content="bskyeen" />`,
     `<meta property="og:url" content="${postUrl}" />`,
     `<meta http-equiv="refresh" content="0; url = ${postUrl}" />`
   ];
@@ -54,7 +62,7 @@ function getMetaTags(host: string, userHandler: string, postId: string, thread: 
       oembedDescription += getQuotingString(quotedPost.author, escapeHtml(quotedPost.text));
     }
 
-    const oembedJsonUrl = generateOembedUrl(host, postUrl, userDisplayString, oembedDescription.slice(0, 250), title);
+    const oembedJsonUrl = generateOembedUrl(host, postUrl, userDisplayString, metrics, motdTitle, motdLink);
 
     metaTags.push(
       `<meta name="twitter:card" content="player" />`,
@@ -72,7 +80,7 @@ function getMetaTags(host: string, userHandler: string, postId: string, thread: 
     return metaTags;
   }
 
-  const oembedJsonUrl = generateOembedUrl(host, postUrl, userDisplayString, '', title);
+  const oembedJsonUrl = generateOembedUrl(host, postUrl, userDisplayString, metrics, motdTitle, motdLink);
   metaTags.push(`<link rel="alternate" href="${oembedJsonUrl}" type="application/json+oembed" title="@${escapeHtml(userHandler)}" />`);
 
   const images = getPostImages(thread);
@@ -137,16 +145,23 @@ function getMetaTags(host: string, userHandler: string, postId: string, thread: 
   }
   metaTags.push(`<meta property="og:description" content="${description}" />`);
 
+  // description is added to og:description
+  void description;
+
   return metaTags;
 }
 
 export function render(host: string, userHandler: string, postId: string, postThread: AppBskyFeedDefs.ThreadViewPost) {
   const postUrl = `https://bsky.app/profile/${userHandler}/post/${postId}`;
+  const { title: motdTitle, link: motdLink } = getRandomMotdEntry(
+    getUserDisplayString(postThread.post.author.displayName, postThread.post.author.handle),
+    postUrl
+  );
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
-	${getMetaTags(host, userHandler, postId, postThread).join('\n')}
+	${getMetaTags(host, userHandler, postId, postThread, motdTitle, motdLink).join('\n')}
 </head>
 
 <body><a href="${postUrl}">Click here</a> or wait to be redirected to the post</body>

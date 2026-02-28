@@ -1,6 +1,11 @@
-# bskye
+# bskyeen
 
 **Embed Bluesky videos, GIFs and images on Discord.**
+
+Forked from [FerroEduardo/bskye](https://github.com/FerroEduardo/bskye), all credit goes to them!
+I just modded it a bit to be funny and furry :3
+
+///////
 
 Written in TypeScript as a [Cloudflare Worker](https://workers.cloudflare.com/).
 
@@ -9,7 +14,7 @@ Written in TypeScript as a [Cloudflare Worker](https://workers.cloudflare.com/).
 
 ----
 
-## Add `e` after `bsky` to make it `bskye.app`
+## Add `en` after `bsky` to make it `bskyeen.app`
 
 ## Embed Videos
 
@@ -30,7 +35,7 @@ Written in TypeScript as a [Cloudflare Worker](https://workers.cloudflare.com/).
 
 ## Direct media links
 
-To access media directly, simply prepend `d.` to the domain (`d.bskye.app`):
+To access media directly, simply prepend `d.` to the domain (`d.bskyeen.app`):
 
 ![Direct media links](/.docs/embed-example/direct-video.png)
 
@@ -41,7 +46,7 @@ To access media directly, simply prepend `d.` to the domain (`d.bskye.app`):
 
 Additionally, you can target specific media items within a post by appending an index number (starting from 1) to the URL:
 
-> `https://d.bskye.app/profile/pfrazee.com/post/3lech75aa7k2f/4`
+> `https://d.bskyeen.app/profile/pfrazee.com/post/3lech75aa7k2f/4`
 
 ![Direct media links](/.docs/embed-example/gallery.png)
 
@@ -51,4 +56,4 @@ Additionally, you can target specific media items within a post by appending an 
 
 ## Disclaimer
 
-While bskye supports Discord, full functionality for WhatsApp and Telegram may be limited.
+While bskyeen supports Discord, full functionality for WhatsApp and Telegram may be limited.

@@ -41,7 +41,7 @@ app.get(
   setupPlatform,
   setupDirectMedia,
   cache({
-    cacheName: 'bskye',
+    cacheName: 'bskyeen',
     cacheControl: 'max-age=3600',
     keyGenerator: (c) => {
       const platform = c.get('platform-name') ?? 'discord';
@@ -71,7 +71,7 @@ app.onError((err, c) => {
 });
 
 app.get('/', (c) => {
-  return c.redirect('https://github.com/FerroEduardo/bskye');
+  return c.redirect('https://github.com/zohfur/bskyeen');
 });
 
 app.get('/profile/:userHandler/post/:postId/:mediaIndex{[0-9]+}?', redirectToBlueskyIfNotFromAnyPlatform, getPost);

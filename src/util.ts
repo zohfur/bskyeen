@@ -1,5 +1,6 @@
 import { toUSVString } from 'node:util';
 import { BskyeGif, BskyeImage, BskyeVideo, QuotedPost } from './types';
+import motd from '../motd.json';
 import {
   AppBskyFeedPost,
   AppBskyFeedDefs,
@@ -15,17 +16,49 @@ export function convertPostUrlToAtPostUri(userHandler: string, postId: string): 
   return `at://${userHandler}/app.bsky.feed.post/${postId}`;
 }
 
-export function generateOembedUrl(host: string, link: string, title: string, author: string, provider: string): string {
+export function generateOembedUrl(
+  host: string,
+  link: string,
+  title: string,
+  metrics: string,
+  motdTitle: string,
+  motdLink: string
+): string {
   const params = new URLSearchParams({
-    author: encodeURIComponent(toUSVString(author)),
     link: encodeURIComponent(toUSVString(link)),
     title: encodeURIComponent(toUSVString(title)),
-    provider: encodeURIComponent(toUSVString(provider))
+    metrics: encodeURIComponent(toUSVString(metrics)),
+    motd_title: encodeURIComponent(toUSVString(motdTitle)),
+    motd_link: encodeURIComponent(toUSVString(motdLink))
   });
   return `${host}/oembed?${params}`;
 }
 
 export const metricsFormatter = Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 });
+
+type MotdMap = Record<string, string>;
+type MotdEntry = {
+  title: string;
+  link: string;
+};
+
+const motdMap: MotdMap = Array.isArray(motd) ? {} : motd;
+const motdTitles = Array.isArray(motd) ? motd : Object.keys(motdMap);
+
+export function getRandomMotdEntry(fallbackTitle: string, fallbackLink: string): MotdEntry {
+  if (motdTitles.length === 0) {
+    return {
+      title: fallbackTitle,
+      link: fallbackLink
+    };
+  }
+
+  const index = Math.floor(Math.random() * motdTitles.length);
+  const title = motdTitles[index] ?? fallbackTitle;
+  const link = Array.isArray(motd) ? fallbackLink : motdMap[title] ?? fallbackLink;
+
+  return { title, link };
+}
 
 export function escapeHtml(text: string) {
   return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');

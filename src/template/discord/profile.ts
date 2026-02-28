@@ -1,5 +1,5 @@
 import { AppBskyActorGetProfile } from '@atproto/api';
-import { escapeHtml, generateOembedUrl, getUserDisplayString, metricsFormatter } from '../../util';
+import { escapeHtml, generateOembedUrl, getRandomMotdEntry, getUserDisplayString, metricsFormatter } from '../../util';
 
 function getMetaTags(host: string, profile: AppBskyActorGetProfile.OutputSchema): string[] {
   const profileUrl = `https://bsky.app/profile/${profile.handle}/`;
@@ -8,17 +8,19 @@ function getMetaTags(host: string, profile: AppBskyActorGetProfile.OutputSchema)
 
   const userDisplayString = escapeHtml(getUserDisplayString(profile.displayName, profile.handle));
 
-  let title = '';
+  let metrics = '';
   if (followersCount !== undefined) {
-    title += `👥 ${metricsFormatter.format(followersCount)} `;
+    metrics += `👥 ${metricsFormatter.format(followersCount)} `;
   }
   if (followsCount !== undefined) {
-    title += `➡️ ${metricsFormatter.format(followsCount)} `;
+    metrics += `➡️ ${metricsFormatter.format(followsCount)} `;
   }
   if (postsCount !== undefined) {
-    title += `📸 ${metricsFormatter.format(postsCount)}`;
+    metrics += `📸 ${metricsFormatter.format(postsCount)}`;
   }
-  const oembedJsonUrl = generateOembedUrl(host, profileUrl, userDisplayString, '', title);
+  
+  const { title: motdTitle, link: motdLink } = getRandomMotdEntry('bskyeen', profileUrl);
+  const oembedJsonUrl = generateOembedUrl(host, profileUrl, userDisplayString, metrics, motdTitle, motdLink);
 
   const metaTags = [
     `<meta charset="utf-8" />`,

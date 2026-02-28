@@ -204,7 +204,7 @@ export const validateProfile = (html: cheerio.CheerioAPI, hasAvatar: boolean = f
     {
       attributeName: 'property',
       attributeValue: 'og:site_name',
-      content: 'bskye'
+      content: 'bskyeen'
     },
     {
       attributeName: 'property',

@@ -23,7 +23,6 @@ const mockAuthor: AppBskyActorDefs.ProfileViewDetailed = {
 function validateMetaTags(
   $: cheerio.CheerioAPI,
   expected: {
-    title: string;
     description?: string;
     image?: string;
     video?: string;
@@ -31,7 +30,7 @@ function validateMetaTags(
   }
 ) {
   const actualTitle = $('meta[property="og:title"]').attr('content');
-  expect(actualTitle).toBe(expected.title);
+  expect(actualTitle).toBe('Example User (@example.bsky.social)');
 
   if (expected.description) {
     const actualDescription = $('meta[property="og:description"]').attr('content');
@@ -154,7 +153,6 @@ describe('Post Route - WhatsApp', () => {
 
     const $ = cheerio.load(await res.text());
     validateMetaTags($, {
-      title: 'Example User (@example.bsky.social)',
       description: 'This is a test post',
       card: 'summary_large_image'
     });
@@ -222,7 +220,6 @@ describe('Post Route - WhatsApp', () => {
 
     const $ = cheerio.load(await res.text());
     validateMetaTags($, {
-      title: 'Example User (@example.bsky.social)',
       description: 'Check out this image',
       image: 'https://example.com/fullsize.jpg@jpeg',
       card: 'summary_large_image'
@@ -288,7 +285,6 @@ describe('Post Route - WhatsApp', () => {
 
     const $ = cheerio.load(await res.text());
     validateMetaTags($, {
-      title: 'Example User (@example.bsky.social)',
       description: 'Check out this video',
       video: 'https://bsky.social/xrpc/com.atproto.sync.getBlob?did=did:plc:z72i4hdhw56rfsilqqqyqj2m&cid=mock-video-cid&r=',
       card: 'summary_large_image'
@@ -355,7 +351,6 @@ describe('Post Route - WhatsApp', () => {
 
     const $ = cheerio.load(await res.text());
     validateMetaTags($, {
-      title: 'Example User (@example.bsky.social)',
       card: 'summary_large_image'
     });
 

@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import app from '../src';
 import * as cheerio from 'cheerio';
 import { Element } from 'domhandler';
-
 const userAgent = 'Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)';
 
 describe('Discord Functional Tests (Real API)', () => {
@@ -25,7 +24,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/botafogo.com.br/post/3l4zmomzlla2x');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/botafogo.com.br/post/3l4zmomzlla2x');
     expect($('meta[property="og:description"]').attr('content')).toBeDefined();
@@ -61,7 +60,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/ousincera.bsky.social/post/3l5axoea6ic2l');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe(
       '0; url = https://bsky.app/profile/ousincera.bsky.social/post/3l5axoea6ic2l'
@@ -98,7 +97,7 @@ describe('Discord Functional Tests (Real API)', () => {
 
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/furia.gg/post/3l5dbuctdcf2g');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/furia.gg/post/3l5dbuctdcf2g');
     expect($('meta[name="twitter:card"]').attr('content')).toBe('player');
@@ -135,7 +134,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/fittyforum.bsky.social/post/3l5cl4enhou2r');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe(
       '0; url = https://bsky.app/profile/fittyforum.bsky.social/post/3l5cl4enhou2r'
@@ -204,7 +203,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/pfrazee.com/post/3m4vhttbo6k26');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/pfrazee.com/post/3m4vhttbo6k26');
     expect($('meta[property="og:description"]').attr('content')).toContain('🗨️Quoting');
@@ -261,7 +260,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/pfrazee.com/post/3m6fypvdct22z');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/pfrazee.com/post/3m6fypvdct22z');
     expect($('meta[property="og:description"]').attr('content')).toBeDefined();
@@ -297,7 +296,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/guabiroba.bsky.social/post/3l5rv72jtwo22');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe(
       '0; url = https://bsky.app/profile/guabiroba.bsky.social/post/3l5rv72jtwo22'
@@ -335,7 +334,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/danabra.mov/post/3matfymosas2e');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/danabra.mov/post/3matfymosas2e');
     expect($('meta[property="og:description"]').attr('content')).toContain('🗨️Quoting:');
@@ -371,7 +370,7 @@ describe('Discord Functional Tests (Real API)', () => {
     // Validate each meta tag individually
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/pdsls.dev/post/3m3djmmtlac2t');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/pdsls.dev/post/3m3djmmtlac2t');
     // expect($('meta[property="og:description"]').attr('content')).toContain('Quoting:');
@@ -468,7 +467,7 @@ describe('Discord Functional Tests (Real API)', () => {
       {
         headers: {
           'User-Agent': userAgent,
-          Host: 'd.bskye.app'
+          Host: 'd.bskyeen.app'
         }
       },
       env,
@@ -501,7 +500,7 @@ describe('Discord Functional Tests (Real API)', () => {
     expect($('meta[name="theme-color"]').attr('content')).toBe('#0a7aff');
     expect($('meta[name="twitter:title"]').attr('content')).toBeDefined();
     expect($('meta[name="twitter:title"]').attr('content')).toContain('Paul Frazee');
-    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskye');
+    expect($('meta[property="og:site_name"]').attr('content')).toBe('bskyeen');
     expect($('meta[property="og:url"]').attr('content')).toBe('https://bsky.app/profile/pfrazee.com/');
     expect($('meta[http-equiv="refresh"]').attr('content')).toBe('0; url = https://bsky.app/profile/pfrazee.com/');
     expect($('meta[property="og:description"]').attr('content')).toBeDefined();

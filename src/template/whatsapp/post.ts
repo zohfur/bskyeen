@@ -14,7 +14,7 @@ function getMetaTags(host: string, userHandler: string, postId: string, thread: 
   const metaTags = [
     `<meta charset="utf-8" />`,
     `<meta name="theme-color" content="#0a7aff" />`,
-    `<meta property="og:site_name" content="bskye" />`,
+    `<meta property="og:site_name" content="bskyeen" />`,
     `<meta property="og:title" content="${title}" />`,
     `<meta property="description" content="${description}" />`,
     `<meta property="og:url" content="${postUrl}" />`,

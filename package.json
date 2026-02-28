@@ -1,11 +1,11 @@
 {
-  "name": "bskye",
-  "version": "0.1.0",
+  "name": "bskyeen",
+  "version": "6.2.1",
   "license": "MIT",
-  "description": "Embed Bluesky videos, GIFs and images on Discord",
+  "description": "Embed Bluesky videos, GIFs and images on Discord...but as a yeen.",
   "scripts": {
-    "deploy:production": "wrangler deploy --name=bskye --route bskye.app --route d.bskye.app",
-    "deploy:staging": "wrangler deploy --name=staging-bskye --route staging.bskye.app --route d-staging.bskye.app",
+    "deploy:production": "wrangler deploy --name=bskyeen --route \"bskyeen.app/*\" --route \"d.bskyeen.app/*\"",
+    "deploy:staging": "wrangler deploy --name=staging-bskyeen --route \"staging.bskyeen.app/*\" --route \"d-staging.bskyeen.app/*\"",
     "dev": "wrangler dev",
     "test": "vitest run --silent",
     "test:watch": "vitest watch",

@@ -64,18 +64,22 @@ export async function getProfile(c: Context) {
 }
 
 export async function oembed(c: Context) {
-  const { author, title, provider, link } = c.req.query();
+  const { title, metrics, motd_title, motd_link, link } = c.req.query();
 
   if (!link || !title) {
     return c.json({ message: 'missing parameters' }, { status: 400 });
   }
 
+  const motdTitleStr = motd_title ? unescapeHtml(decodeURIComponent(motd_title)) : 'bskyeen';
+  const motdUrlStr = motd_link ? unescapeHtml(decodeURIComponent(motd_link)) : unescapeHtml(decodeURIComponent(link));
+  const providerName = motd_title ? `bskyeen - ${motdTitleStr}` : 'bskyeen';
+
   return c.json({
-    author_name: author ? unescapeHtml(decodeURIComponent(author)) : '',
+    author_name: metrics ? unescapeHtml(decodeURIComponent(metrics)).trim() : '',
     author_url: unescapeHtml(decodeURIComponent(link)),
-    provider_name: `bskye${provider ? ' - ' + unescapeHtml(decodeURIComponent(provider)) : ''}`,
-    provider_url: unescapeHtml(decodeURIComponent(link)),
-    title: `bskye${title ? ' - ' + unescapeHtml(decodeURIComponent(title)) : ''}`,
+    provider_name: providerName,
+    provider_url: motdUrlStr,
+    title: unescapeHtml(decodeURIComponent(title)),
     type: 'link',
     version: '1.0'
   });

@@ -7,6 +7,6 @@ describe('Example', () => {
     const res = await app.request('/', {}, env);
 
     expect(res.status).toBe(302);
-    expect(res.headers.get('Location')).toBe('https://github.com/FerroEduardo/bskye');
+    expect(res.headers.get('Location')).toBe('https://github.com/zohfur/bskyeen');
   });
 });
